@@ -65,7 +65,7 @@ open class Markdowner {
         let context = JSContext.init()!
         let markdownItString: String = try! String.init(contentsOfFile: mdPath)
         let _ = context.evaluateScript(markdownItString)
-        guard let mdjs = context.globalObject.objectForKeyedSubscript("draw") else {
+        guard let mdjs = context.globalObject.objectForKeyedSubscript("markdownit") else {
             return nil
         }
         
