@@ -89,10 +89,8 @@ open class Markdowner {
     open func render(_ markdownString: String, doFastRender: Bool = true) -> NSAttributedString? {
 
         // NOTE Will return 'undefined' (trapped below) if it's a unknown language
-        let returnValue: JSValue
-        //let options: [String: Any] = ["language": language, "ignoreIllegals": self.ignoreIllegals]
-        returnValue = mdjs.invokeMethod("render", withArguments: [markdownString])
-        
+        let returnValue: JSValue = mdjs.invokeMethod("render", withArguments: [markdownString])
+        print(returnValue)
         // Check we got a valid string back - fail if we didn't
         let renderedHTMLValue: JSValue? = returnValue.objectForKeyedSubscript("value")
         guard var renderedHTMLString: String = renderedHTMLValue!.toString() else {
