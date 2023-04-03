@@ -89,7 +89,7 @@ open class Markdowner {
     open func render(_ markdownString: String, doFastRender: Bool = true) -> NSAttributedString? {
 
         // NOTE Will return 'undefined' (trapped below) if it's a unknown language
-        let returnValue: JSValue = mdjs.invokeMethod("draw", withArguments: [markdownString])
+        let returnValue: JSValue = mdjs.invokeMethod("md.renderInline", withArguments: [markdownString])
         print(returnValue)
         // Check we got a valid string back - fail if we didn't
         let renderedHTMLValue: JSValue? = returnValue.objectForKeyedSubscript("value")
