@@ -63,9 +63,9 @@ open class Markdowner {
 
         // Check the JavaScript or fail
         let context = JSContext.init()!
-        let markdownIt: String = try! String.init(contentsOfFile: mdPath)
-        let _ = context.evaluateScript(markdownIt)
-        guard let mdjs = context.globalObject.objectForKeyedSubscript("markdownit") else {
+        let markdownItString: String = try! String.init(contentsOfFile: mdPath)
+        let _ = context.evaluateScript(markdownItString)
+        guard let mdjs = context.globalObject.objectForKeyedSubscript("draw") else {
             return nil
         }
         
@@ -89,7 +89,7 @@ open class Markdowner {
     open func render(_ markdownString: String, doFastRender: Bool = true) -> NSAttributedString? {
 
         // NOTE Will return 'undefined' (trapped below) if it's a unknown language
-        let returnValue: JSValue = mdjs.invokeMethod("render", withArguments: [markdownString])
+        let returnValue: JSValue = mdjs.invokeMethod("draw", withArguments: [markdownString])
         print(returnValue)
         // Check we got a valid string back - fail if we didn't
         let renderedHTMLValue: JSValue? = returnValue.objectForKeyedSubscript("value")

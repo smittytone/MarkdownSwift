@@ -23,7 +23,7 @@ let package = Package(
             dependencies: [],
             path: "Sources",
             resources: [
-                .copy("Assets/markdown-it.min.js"),
+                .copy("Assets/markdown-it.js"),
                 .copy("Assets/styles/default.css")
             ])
     ]
