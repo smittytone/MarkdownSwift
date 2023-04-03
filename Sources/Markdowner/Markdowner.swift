@@ -57,7 +57,7 @@ open class Markdowner {
 #endif
         
         // Load the highlight.js code from the bundle or fail
-        guard let mdPath: String = bundle.path(forResource: "markdown-it.min", ofType: "js") else {
+        guard let mdPath: String = bundle.path(forResource: "markdown-it", ofType: "js") else {
             return nil
         }
 
@@ -65,7 +65,7 @@ open class Markdowner {
         let context = JSContext.init()!
         let markdownIt: String = try! String.init(contentsOfFile: mdPath)
         let _ = context.evaluateScript(markdownIt)
-        guard let mdjs = context.globalObject.objectForKeyedSubscript("markdownit") else {
+        guard let mdjs = context.globalObject.objectForKeyedSubscript("MarkdownIt") else {
             return nil
         }
         
