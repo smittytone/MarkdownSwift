@@ -50,8 +50,12 @@ open class Markdowner {
         
         // Get the library's bundle based on how it's
         // being included in the host app
+#if SWIFT_PACKAGE
+        let bundle = Bundle.module
+#else
         let bundle = Bundle(for: Markdowner.self)
-
+#endif
+        
         // Load the highlight.js code from the bundle or fail
         guard let mdPath: String = bundle.path(forResource: "markdown-it.min", ofType: "js") else {
             return nil
