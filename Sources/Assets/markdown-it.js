@@ -8475,12 +8475,3 @@
   return markdownIt;
 }));
 
-let md = require('markdown-it')({
-  html: true,
-  linkify: true,
-  typographer: true
-});
-
-function draw(textString) {
-  return md.render(textString);
-}

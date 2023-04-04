@@ -30,6 +30,7 @@ open class Markdowner {
     
     // MARK: - Private Properties
     private let mdjs: JSValue
+    private let mdji: JSValue
     private let bundle: Bundle
     private let htmlStart: String = "<"
     private let spanStart: String = "span class=\""
@@ -71,6 +72,7 @@ open class Markdowner {
         
         // Store the results for later
         self.mdjs = mdjs
+        self.mdji = mdjs.invokeMethod("new")
         self.bundle = bundle
     }
 
@@ -89,8 +91,12 @@ open class Markdowner {
     open func render(_ markdownString: String, doFastRender: Bool = true) -> NSAttributedString? {
 
         // NOTE Will return 'undefined' (trapped below) if it's a unknown language
-        let returnValue: JSValue = mdjs.invokeMethod("renderInline", withArguments: [markdownString])
+        let returnValue: JSValue = mdjs.invokeMethod("render", withArguments: [markdownString])
         print(returnValue)
+        
+        let returnValue2: JSValue = mdji.invokeMethod("render", withArguments: [markdownString])
+        print(returnValue2)
+        
         // Check we got a valid string back - fail if we didn't
         let renderedHTMLValue: JSValue? = returnValue.objectForKeyedSubscript("value")
         guard var renderedHTMLString: String = renderedHTMLValue!.toString() else {
