@@ -30,7 +30,6 @@ open class Markdowner {
     
     // MARK: - Private Properties
     private let mdjs: JSValue
-    private let mdji: JSValue
     private let bundle: Bundle
     private let htmlStart: String = "<"
     private let spanStart: String = "span class=\""
