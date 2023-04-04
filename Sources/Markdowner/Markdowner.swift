@@ -72,7 +72,7 @@ open class Markdowner {
         
         // Store the results for later
         self.mdjs = mdjs
-        self.mdji = mdjs.invokeMethod("new")
+        self.mdji = mdjs.invokeMethod("new", withArguments: nil)
         self.bundle = bundle
     }
 
