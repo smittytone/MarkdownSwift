@@ -7873,7 +7873,7 @@
   // markdown-it default options
     var _default = {
     options: {
-      html: false,
+      html: true,
       // Enable HTML tags in source
       xhtmlOut: false,
       // Use '/' to close single tags (<br />)
@@ -7884,7 +7884,7 @@
       linkify: false,
       // autoconvert URL-like texts to links
       // Enable some language-neutral replacements + quotes beautification
-      typographer: false,
+      typographer: true,
       // Double + single quotes replacement pairs, when typographer enabled,
       // and smartquotes on. Could be either a String or an Array.
       // For example, you can use '«»„“' for Russian, '„“‚‘' for German,
