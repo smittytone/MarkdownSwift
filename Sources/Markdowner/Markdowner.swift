@@ -70,7 +70,7 @@ open class Markdowner {
         }
         
         // Store the results for later
-        self.mdjs = mdjs.construct(withArguments: ["default", "{ html: true }"])
+        self.mdjs = mdjs.construct(withArguments: ["default"])
         self.bundle = bundle
     }
 
