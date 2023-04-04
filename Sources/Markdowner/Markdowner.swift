@@ -26,6 +26,7 @@ open class Markdowner {
     // When `true`, forces highlighting to finish even if illegal syntax is detected.
     open var ignoreIllegals = false
     open var theme: Theme!
+    open var styleString: String = "body {font-family:sans-serif;cursor:default;}"
 
     
     // MARK: - Private Properties
@@ -109,7 +110,7 @@ open class Markdowner {
             returnAttrString = processHTMLString(renderedHTMLString)!
         } else {
             // Use NSAttributedString's own not-so-fast rendering
-            renderedHTMLString = "<style></style>" + renderedHTMLString
+            renderedHTMLString = "<style>" + self.styleString + "</style>" + renderedHTMLString
             
             let data = renderedHTMLString.data(using: String.Encoding.utf8)!
             let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
