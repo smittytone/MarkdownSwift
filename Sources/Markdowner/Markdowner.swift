@@ -72,7 +72,7 @@ open class Markdowner {
         
         // Store the results for later
         self.mdjs = mdjs
-        self.mdji = mdjs.invokeMethod("new", withArguments: nil)
+        self.mdji = mdjs.construct(withArguments: nil)
         self.bundle = bundle
     }
 
@@ -96,6 +96,10 @@ open class Markdowner {
         
         let returnValue2: JSValue = mdji.invokeMethod("render", withArguments: [markdownString])
         print(returnValue2)
+        
+        let mdjk: JSValue = mdji.objectForKeyedSubscript("render")
+        let returnValue3: JSValue = mdjk.call(withArguments: [markdownString])
+        print(returnValue3)
         
         // Check we got a valid string back - fail if we didn't
         let renderedHTMLValue: JSValue? = returnValue.objectForKeyedSubscript("value")
