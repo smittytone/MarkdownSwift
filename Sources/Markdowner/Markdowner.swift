@@ -94,7 +94,7 @@ open class Markdowner {
         print(returnValue)
         
         // Check we got a valid string back - fail if we didn't
-        let renderedHTMLString: String = returnValue.toString()
+        var renderedHTMLString: String = returnValue.toString()
         
         // Trap 'undefined' output as this is effectively an error condition
         // and should not be returned as a valid result -- it's actually a fail
